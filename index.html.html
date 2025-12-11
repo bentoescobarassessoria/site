@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bento Escobar Assessoria Empresarial</title>
+    <style>
+        /* --- Configurações Gerais --- */
+        :root {
+            --primary-color: #1a2b49; /* Azul Marinho Profundo */
+            --secondary-color: #2c3e50;
+            --accent-color: #b08d55; /* Dourado Sóbrio para detalhes */
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Seções Gerais --- */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- HERO SECTION (NOVA) --- */
+        #hero {
+            height: 60vh; /* Ocupa 60% da altura da tela */
+            /* Imagem de fundo de cidade com sobreposição azul */
+            background-image: linear-gradient(rgba(26, 43, 73, 0.8), rgba(26, 43, 73, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efeito parallax suave */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0;
+            color: var(--white);
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--white); /* Sobrescreve a cor padrão */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* --- Quem Somos --- */
+        #quem-somos {
+            background-color: var(--white);
+        }
+
+        /* --- A Era da Transação --- */
+        #era-transacao {
+            background-color: var(--light-bg);
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* --- Soluções (Grid) --- */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .solution-card h3 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* --- Equipe (Grid de Fotos) --- */
+        #equipe {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        #equipe .section-title {
+            color: var(--white);
+        }
+        
+        #equipe .section-title::after {
+            background-color: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: top;
+            background-color: #ddd;
+        }
+
+        .member-info {
+            padding: 15px;
+        }
+
+        .member-name {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* --- Contato --- */
+        #contato {
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+
+        .contact-box {
+            background: var(--white);
+            display: inline-block;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .email-link {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .email-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+        }
+
+        /* --- Responsividade Mobile --- */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            #hero {
+                height: 50vh;
+            }
+
+            #hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Bento Escobar</div>
+            <nav>
+                <ul>
+                    <li><a href="#quem-somos">Quem Somos</a></li>
+                    <li><a href="#era-transacao">A Era da Transação</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h1>Consultoria de Excelência</h1>
+            <p>Estratégia Tributária e Segurança Jurídica para Grandes Negócios</p>
+        </div>
+    </section>
+
+    <section id="quem-somos">
+        <div class="container">
+            <h2 class="section-title">Quem Somos</h2>
+            <p>A Bento Escobar Assessoria Empresarial é uma consultoria especializada no atendimento a grandes empresas, com atuação focada em estratégias de alto impacto na esfera tributária. Nosso propósito é oferecer soluções que conciliem técnica apurada, visão estratégica e profundo conhecimento do ambiente regulatório brasileiro.</p>
+            <p>A transação tributária constitui nosso principal produto e área de maior excelência. Atuamos de forma precisa e estruturada na construção, negociação e acompanhamento de oportunidades que visam reduzir passivos, destravar litígios e promover segurança jurídica no relacionamento entre contribuintes e Administração Pública.</p>
+            <p>Nosso trabalho integra uma advocacia tributária altamente especializada, aliada ao suporte técnico de profissionais experientes em matéria fiscal, o que nos permite analisar cada caso com profundidade e oferecer um serviço completo, rigoroso e alinhado às melhores práticas de governança corporativa — sempre observando fielmente os limites éticos da atuação jurídica.</p>
+        </div>
+    </section>
+
+    <section id="era-transacao">
+        <div class="container">
+            <h2 class="section-title">A Era da Transação Tributária</h2>
+            <p>A cultura do "Refis" tradicional — parcelamentos especiais aprovados periodicamente pelo Congresso com descontos lineares — cedeu lugar a um instrumento mais sofisticado e perene: a <strong>Transação Tributária</strong>.</p>
+            <p>Regulamentada pela Lei nº 13.988/2020 e aprimorada constantemente, a transação permite a negociação de débitos inscritos em dívida ativa da União com descontos e prazos de pagamento alongados. Este é um produto que exige do advogado não apenas conhecimento jurídico, mas alta capacidade de negociação e análise econômico-financeira.</p>
+        </div>
+    </section>
+
+    <section id="solucoes">
+        <div class="container">
+            <h2 class="section-title">Nossos Produtos</h2>
+            <div class="solutions-grid">
+                
+                <div class="solution-card">
+                    <h3>Editais Temáticos (2025)</h3>
+                    <p>Monitoramento proativo e adesão a editais da PGFN focados em teses de disseminada controvérsia.</p>
+                    <p><strong>Destaques 2025:</strong> Edital nº 52/2025 (Conceito de "praça" para IPI) e Edital nº 53/2025 (Preços de Transferência). Atuamos também em editais setoriais, como o Desenrola Rural.</p>
+                </div>
+
+                <div class="solution-card">
+                    <h3>Transação Individual e CAPAG</h3>
+                    <p>Para passivos acima de R$ 10 milhões. O foco é a <strong>Revisão de Capag</strong> (Capacidade de Pagamento). Através de laudos técnicos, buscamos reclassificar o rating da empresa (de A/B para C/D) para desbloquear descontos máximos e uso de prejuízo fiscal.</p>
+                </div>
+
+                <div class="solution-card">
+                    <h3>Autorregularização e "Litígio Zero"</h3>
+                    <p>Consultoria em programas de conformidade incentivada, como o "Litígio Zero Autorregularização" (Portaria RFB nº 568/2025). Auxiliamos na confissão e regularização de débitos antes de fiscalizações formais, garantindo previsibilidade e segurança.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe">
+        <div class="container">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <div class="team-grid">
+                
+                <div class="team-member">
+                    <img src="Dr. Bento de Albuquereque Santiago.jpg" alt="Dr. Bento de Albuquerque Santiago">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Bento de Albuquerque Santiago</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dr. Ezequiel de Sousa Escobar.jpg" alt="Dr. Ezequiel de Sousa Escobar">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Ezequiel de Sousa Escobar</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dra. Maria Capitolina de Pádua Santiago.jpg" alt="Dra. Maria Capitolina de Pádua Santiago">
+                    <div class="member-info">
+                        <div class="member-name">Dra. Maria Capitolina de P. Santiago</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dr. Matheus Arruda.jpg" alt="Dr. Matheus Arruda">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Matheus Arruda</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dr. Marcílio Macêdo.jpg" alt="Dr. Marcílio Macêdo">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Marcílio Macêdo</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dr. Raul Lima.jpg" alt="Dr. Raul Lima">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Raul Lima</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dr. Ruan Hagno.jpg" alt="Dr. Ruan Hagno">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Ruan Hagno</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dra. Dainara Melo.jpg" alt="Dra. Dainara Melo">
+                    <div class="member-info">
+                        <div class="member-name">Dra. Dainara Melo</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Dr. Willian Matias.jpg" alt="Dr. Willian Matias">
+                    <div class="member-info">
+                        <div class="member-name">Dr. Willian Matias</div>
+                    </div>
+                </div>
+
+                 <div class="team-member">
+                    <img src="Dra. Luísa Cunha.jpg" alt="Dra. Luísa Cunha">
+                    <div class="member-info">
+                        <div class="member-name">Dra. Luísa Cunha</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-box">
+                <p>Entre em contato conosco para uma análise preliminar.</p>
+                <a href="mailto:bentoescobarassessoriaempresar@gmail.com" class="email-link">
+                    bentoescobarassessoriaempresar@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bento Escobar Assessoria Empresarial. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
